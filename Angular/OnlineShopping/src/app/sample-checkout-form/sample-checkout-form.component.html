@@ -1,0 +1,50 @@
+<p>sample-checkout-form works!</p>
+
+<h2>Sample Validations Form</h2>
+
+
+<form #checkoutForm="ngForm" novalidate>
+    <div class="form-group">
+        <label for="fullname">First Name</label>
+        <input required #fullname="ngModel" type="text" [(ngModel)]="checkout.fullname" id="fullname" class="form-control" name="fullname">
+        <!-- <div class="error"  [ngClass]="{'is-invalid':checkoutForm.submitted && fullname.invalid}">
+            Full Name is required
+        </div> -->
+        <!-- {{fullname.touched}} -->
+        {{fullname.dirty}}
+        <div *ngIf="fullname.invalid && (fullname.touched || fullname.dirty)" class="error">
+            Fullname is required</div>
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email</label>
+        <input required #email="ngModel" type="email" [(ngModel)]="checkout.email" id="email" class="form-control" name="email">
+        <span *ngIf="email.invalid && email.touched" class="error">Email is required</span>
+    </div>
+
+    <div class="form-group">
+        <label for="address">Address</label>
+        <input required #address="ngModel" type="text" ngModel id="address" class="form-control" name="address">
+    </div>
+
+    <div class="form-group">
+        <label for="street">Street</label>
+        <input required #street="ngModel" type="text" ngModel id="street"class="form-control" name="street">
+    </div>
+
+    <div class="form-group">
+        <label for="city">City</label>
+        <input required #city="ngModel" type="text" ngModel id="city" class="form-control" name="city">
+    </div>
+
+    <div class="form-group">
+        <label for="cardnumber">Card Number</label>
+        <input required #cardnumber="ngModel" type="text" ngModel id="cardnumber" class="form-control" name="cardnumber">
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+    {{checkout | json}}
+</form>
+
